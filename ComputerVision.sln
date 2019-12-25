@@ -21,6 +21,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceLandmark", "FaceLandMar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EmotionDetection", "EmotionDetection\EmotionDetection.vcxproj", "{83E37FEC-2885-4B8D-9498-E2493B19B43F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{566FC1CA-8DEB-4D28-B966-F9E00DD7914D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ghost", "Ghost", "{3CA19AB2-5299-448B-83FC-E0AAAA1CF14E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{A52E76A1-F155-48E4-8EE6-50D3443A848E}"
+	ProjectSection(SolutionItems) = preProject
+		ThirdParty\Ghost\include\GIVisionDetect.h = ThirdParty\Ghost\include\GIVisionDetect.h
+		ThirdParty\Ghost\include\GUtilities.hpp = ThirdParty\Ghost\include\GUtilities.hpp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -104,6 +114,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3CA19AB2-5299-448B-83FC-E0AAAA1CF14E} = {566FC1CA-8DEB-4D28-B966-F9E00DD7914D}
+		{A52E76A1-F155-48E4-8EE6-50D3443A848E} = {3CA19AB2-5299-448B-83FC-E0AAAA1CF14E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71A258D5-7A2B-401B-AB34-A7E39AD23973}

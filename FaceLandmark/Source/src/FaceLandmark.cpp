@@ -11,10 +11,10 @@
 
 #include "ldmarkmodel.h"
 
-namespace fs = std::experimental::filesystem;
-using namespace facegood::signalslot;
+namespace fs = std::filesystem;
+using namespace Ghost::signalslot;
 
-namespace facegood
+namespace Ghost
 {
 	class FaceLandmark::Impl
 	{
@@ -232,7 +232,7 @@ namespace facegood
 		return EDetectModual::HumanFace_LandMark;
 	}
 
-	EResult FaceLandmark::saveFaceToDataBase(const cv::Mat& frameSave, const SPersonInfor& infor)
+	EResult FaceLandmark::saveFaceToDataBase(const cv::Mat& frameSave, const SPersonalInformation& infor)
 	{
 		return EResult::SR_OK;
 	}
@@ -241,4 +241,4 @@ namespace facegood
 	{
 
 	}
-}///namespace facegood
+}///namespace Ghost

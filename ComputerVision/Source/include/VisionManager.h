@@ -13,7 +13,7 @@
 #include <string>
 #include <functional>
 
-#include "FgUtilities.hpp"
+#include "GUtilities.hpp"
 
 #ifndef VISIONMANAGER_API
 #define VISIONMANAGER_API
@@ -24,9 +24,9 @@
 #endif
 
 using namespace std;
-using namespace facegood;
+using namespace Ghost;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Visual Inspection Management Object
@@ -158,7 +158,7 @@ namespace facegood
 		* \@brief Found friend appearing
 		* \@param func::functor that need to be triggered
 		*/
-		void bindSlotFriendFind(const std::function<void(const std::vector<facegood::SPersonInfor>&)>& functor);
+		void bindSlotFriendFind(const std::function<void(const std::vector<Ghost::SPersonInfor>&)>& functor);
 
 		/**
 		* \@brief Camera status signal
@@ -170,7 +170,7 @@ namespace facegood
 		* \@brief Emotion Satate Changed
 		* \@param func::functor that need to be triggered
 		*/
-		void bindSlotEmotionState(const std::function<void(const std::vector<facegood::EEmotion>&)>& functor);
+		void bindSlotEmotionState(const std::function<void(const std::vector<Ghost::EEmotion>&)>& functor);
 
 	public:
 		/**
@@ -214,4 +214,4 @@ namespace facegood
 		//Image Width/Height
 		int m_nImageWidth, m_nImageHeight;
 	};
-}///namespace facegood
+}///namespace Ghost

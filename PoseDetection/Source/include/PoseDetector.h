@@ -8,7 +8,7 @@
 */
 #pragma once
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 #include <vector>
 #include <string>
@@ -23,7 +23,7 @@
 
 using namespace std;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Pose detection in human body
@@ -99,10 +99,10 @@ namespace facegood
 	/**
 	* \@brief
 	*/
-	void bindSlotPoseFind(const std::function<void(const std::vector<facegood::SPoint2D>&)>& func);
+	void bindSlotPoseFind(const std::function<void(const std::vector<Ghost::SPoint2D>&)>& func);
 
 	private:
 		class Impl;
 		std::unique_ptr<Impl> m_pImpl;
 	};
-}///namespace facegood
+}///namespace Ghost

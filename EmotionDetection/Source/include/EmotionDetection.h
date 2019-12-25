@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 #ifndef FACERECOGNITION_API
 #define FACERECOGNITION_API
@@ -10,11 +10,11 @@
 #define GHOST_SIGNAL 
 #endif
 
-using namespace facegood;
+using namespace Ghost;
 using namespace std;
 using namespace cv;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Emotion Detector for complex task
@@ -93,11 +93,11 @@ namespace facegood
 		* \@brief Found face Landmark appearing
 		* \@param func::Functions that need to be triggered
 		*/
-		void bindSlotEmotionChanged(const std::function<void(const std::vector<facegood::EEmotion>&)>& functor);
+		void bindSlotEmotionChanged(const std::function<void(const std::vector<Ghost::EEmotion>&)>& functor);
 
 	private:
 		class Impl;
 		std::unique_ptr<Impl> m_pImpl;
 	
 	};
-}///namespace facegood
+}///namespace Ghost

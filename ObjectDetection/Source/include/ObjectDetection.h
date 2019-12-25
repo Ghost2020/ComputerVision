@@ -12,11 +12,11 @@
 #include <memory>
 #include <vector>
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 using namespace std;
 using namespace cv;
-using namespace facegood;
+using namespace Ghost;
 
 #ifndef OBJECTDETECTION_API
 #define OBJECTDETECTION_API
@@ -26,7 +26,7 @@ using namespace facegood;
 #define GHOST_SIGNAL
 #endif
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Object Detection Module
@@ -107,4 +107,4 @@ namespace facegood
 		class Impl;
 		unique_ptr<Impl> m_pImpl;
 	};
-}///namespace facegood
+}///namespace Ghost

@@ -11,14 +11,14 @@
 #include <openpose/headers.hpp>
 
 using namespace op;
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 using namespace std;
-using namespace facegood::signalslot;
+using namespace Ghost::signalslot;
 
 // Display
 DEFINE_bool(no_display, false, "Enable to disable the visual display.");
 
-namespace facegood
+namespace Ghost
 {
 	class PoseDetector::Impl
 	{
@@ -223,8 +223,8 @@ namespace facegood
 		SFlags m_flags;
 
 		//ÐÅºÅ²Û
-		facegood::signalslot::Signal<void(const std::vector<facegood::SPoint2D>&)> m_SIGNAL_void_points2D;
-		facegood::signalslot::Slot m_SLOT_void_points2D;
+		Ghost::signalslot::Signal<void(const std::vector<Ghost::SPoint2D>&)> m_SIGNAL_void_points2D;
+		Ghost::signalslot::Slot m_SLOT_void_points2D;
 
 		//Ëø
 		std::mutex m_mutex;
@@ -314,7 +314,7 @@ namespace facegood
 		return EDetectModual::Pose_Detection_Modual;
 	}
 
-	void PoseDetector::bindSlotPoseFind(const std::function<void(const std::vector<facegood::SPoint2D>&)>& func)
+	void PoseDetector::bindSlotPoseFind(const std::function<void(const std::vector<Ghost::SPoint2D>&)>& func)
 	{
 		m_pImpl->m_SLOT_void_points2D = m_pImpl->m_SIGNAL_void_points2D.connect(func);
 	}
@@ -341,4 +341,4 @@ namespace facegood
 	{
 		return PoseDetector::Impl::s_version;
 	}
-}///namespace facegood
+}///namespace Ghost

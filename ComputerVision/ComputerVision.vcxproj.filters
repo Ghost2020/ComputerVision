@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\include\FgLog.h">
+    <ClInclude Include="Source\include\VisionManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Source\include\VisionManager.h">
+    <ClInclude Include="Source\include\GLog.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\src\FgLog.cpp">
+    <ClCompile Include="Source\src\VisionManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Source\src\VisionManager.cpp">
+    <ClCompile Include="Source\src\GLog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

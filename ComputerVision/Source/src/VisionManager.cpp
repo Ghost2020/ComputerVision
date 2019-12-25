@@ -1,5 +1,5 @@
 #include "VisionManager.h"
-#include "FgLog.h"
+#include "GLog.h"
 
 #include <exception>
 #include <atomic>
@@ -28,11 +28,11 @@
 
 using namespace std;
 using namespace cv;
-using namespace facegood;
-using namespace facegood::signalslot;
+using namespace Ghost;
+using namespace Ghost::signalslot;
 namespace fs = std::experimental::filesystem;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Private implementation of each detection module
@@ -102,13 +102,13 @@ namespace facegood
 		Signal<void(void)> m_SIGNAL_void_void;
 		Slot m_SLOT_Person;
 		//信号槽 发现熟人
-		Signal<void(const std::vector<facegood::SPersonInfor>&)> m_SIGNAL_void_person;
+		Signal<void(const std::vector<Ghost::SPersonInfor>&)> m_SIGNAL_void_person;
 		Slot m_SLOT_Friend;
 		//信号槽 发现人脸(外框)
-		Signal<void(const std::vector<facegood::SRect>&)> m_SIGNAL_void_rects;
+		Signal<void(const std::vector<Ghost::SRect>&)> m_SIGNAL_void_rects;
 		Slot m_SLOT_rects;
 		//信号槽 pose
-		Signal<void(const std::vector<facegood::SPoint2D>&)> m_SIGNAL_void_pose;
+		Signal<void(const std::vector<Ghost::SPoint2D>&)> m_SIGNAL_void_pose;
 		Slot m_SLOT_Poses;
 		//信号槽 脸与 身份证ID 比对
 		Signal<void(const bool)> m_SIGNAL_void_bool;
@@ -117,7 +117,7 @@ namespace facegood
 		Signal<void(void)> m_SIGNAL_void_Camera;
 		Slot m_SLOT_Camera;
 		//信号槽 情感状态
-		Signal<void(const std::vector<facegood::EEmotion>&)> m_SIGNAL_void_emotions;
+		Signal<void(const std::vector<Ghost::EEmotion>&)> m_SIGNAL_void_emotions;
 		Slot m_SLOT_Emotions;
 
 		//互斥锁
@@ -128,14 +128,14 @@ namespace facegood
 		//可用的相机数量
 		static size_t s_nCameraNum;
 		//log对象
-		static FgLog s_log;
+		static GLog s_log;
 		//版本
 		const static string s_version;
 
 	public:
 		Impl()
 		{
-			s_log.writeLog("VisionManager::Impl::Impl()", FgLog::LOG_LEVEL_TRACE);
+			s_log.writeLog("VisionManager::Impl::Impl()", GLog::LOG_LEVEL_TRACE);
 
 			m_detectors.clear();
 		};
@@ -145,7 +145,7 @@ namespace facegood
 			for (const auto& detector : m_detectors)
 				detector->antiModual();
 
-			s_log.writeLog("VisionManager::Impl::~Impl()", FgLog::LOG_LEVEL_TRACE);
+			s_log.writeLog("VisionManager::Impl::~Impl()", GLog::LOG_LEVEL_TRACE);
 		};
 
 	public:
@@ -232,7 +232,7 @@ namespace facegood
 					return reuslt = EResult::SR_Detector_Already_Exist;
 			}
 
-			s_log.writeLog("VisionManager::Impl::initModule()::start", FgLog::LOG_LEVEL_TRACE);
+			s_log.writeLog("VisionManager::Impl::initModule()::start", GLog::LOG_LEVEL_TRACE);
 
 			switch (type)
 			{
@@ -341,7 +341,7 @@ namespace facegood
 				}
 			}
 
-			s_log.writeLog("VisionManager::Impl::initModule()::over", FgLog::LOG_LEVEL_TRACE);
+			s_log.writeLog("VisionManager::Impl::initModule()::over", GLog::LOG_LEVEL_TRACE);
 
 			return reuslt;
 		}
@@ -354,7 +354,7 @@ namespace facegood
 		{
 			std::lock_guard<std::mutex> lock(m_mutex);
 
-			s_log.writeLog("VisionManager::Impl::antiModual()::start", FgLog::LOG_LEVEL_TRACE);
+			s_log.writeLog("VisionManager::Impl::antiModual()::start", GLog::LOG_LEVEL_TRACE);
 
 			EResult res = EResult::SR_OK;
 			for (auto iter = m_detectors.begin(); iter != m_detectors.end(); iter++)
@@ -368,7 +368,7 @@ namespace facegood
 				}
 			}
 
-			s_log.writeLog("VisionManager::Impl::antiModual()::over", FgLog::LOG_LEVEL_TRACE);
+			s_log.writeLog("VisionManager::Impl::antiModual()::over", GLog::LOG_LEVEL_TRACE);
 
 			return res;
 		}
@@ -406,7 +406,7 @@ namespace facegood
 		/**
 		* \@brief 触发 发现人的信号
 		*/
-		void SlotFriendsFind(const std::vector<facegood::SPersonInfor>& friends)
+		void SlotFriendsFind(const std::vector<Ghost::SPersonInfor>& friends)
 		{
 			m_SIGNAL_void_person(friends);
 		}
@@ -420,14 +420,14 @@ namespace facegood
 		/**
 		* \@brief 触发
 		*/
-		void SlotPoseFind(const std::vector<facegood::SPoint2D>& points)
+		void SlotPoseFind(const std::vector<Ghost::SPoint2D>& points)
 		{
 			m_SIGNAL_void_pose(points);
 		}
 		/**
 		* \@brief 触发
 		*/
-		void SlotFaceRectFind(const std::vector<facegood::SRect>& faces)
+		void SlotFaceRectFind(const std::vector<Ghost::SRect>& faces)
 		{
 			m_SIGNAL_void_rects(faces);
 		}
@@ -451,7 +451,7 @@ namespace facegood
 		/**
 		* \@brief 触发表情检测
 		*/
-		void SlotFaceEmotion(const std::vector<facegood::EEmotion>& emotions)
+		void SlotFaceEmotion(const std::vector<Ghost::EEmotion>& emotions)
 		{
 			m_SIGNAL_void_emotions(emotions);
 		}
@@ -460,7 +460,7 @@ namespace facegood
 
 	size_t VisionManager::Impl::s_nCameraNum = 0;
 	wstring VisionManager::Impl::s_resourceBasePath = L"";
-	FgLog VisionManager::Impl::s_log;
+	GLog VisionManager::Impl::s_log;
 #if  (_MSC_TOOLSET_VER_ == 140)
 	#ifdef NDEBUG
 		const string VisionManager::Impl::s_version = "vc140-r.0";
@@ -709,7 +709,7 @@ namespace facegood
 		m_pImpl->m_SLOT_Person = m_pImpl->m_SIGNAL_void_void.connect(func);
 	}
 
-	void VisionManager::bindSlotFriendFind(const std::function<void(const std::vector<facegood::SPersonInfor>&)>& functor)
+	void VisionManager::bindSlotFriendFind(const std::function<void(const std::vector<Ghost::SPersonInfor>&)>& functor)
 	{
 		m_pImpl->m_SLOT_Friend = m_pImpl->m_SIGNAL_void_person.connect(functor);
 	}
@@ -719,7 +719,7 @@ namespace facegood
 		m_pImpl->m_SLOT_Camera = m_pImpl->m_SIGNAL_void_Camera.connect(functor);
 	}
 
-	void VisionManager::bindSlotEmotionState(const std::function<void(const std::vector<facegood::EEmotion>&)>& functor)
+	void VisionManager::bindSlotEmotionState(const std::function<void(const std::vector<Ghost::EEmotion>&)>& functor)
 	{
 		m_pImpl->m_SLOT_Emotions = m_pImpl->m_SIGNAL_void_emotions.connect(functor);
 	}
@@ -745,4 +745,4 @@ namespace facegood
 		delete[] wide;
 		return w_str;
 	}
-}///namespace facegood
+}///namespace Ghost

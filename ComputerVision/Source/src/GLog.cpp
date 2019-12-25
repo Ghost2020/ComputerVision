@@ -1,23 +1,23 @@
-#include "FgLog.h"
+#include "GLog.h"
 
 #include <filesystem>
 
 namespace fs = std::experimental::filesystem;
 
-namespace facegood
+namespace Ghost
 {
-	FgLog::FgLog() noexcept(true)
+	GLog::GLog() noexcept(true)
 	{
 		//设置为中文路径
 		std::locale::global(std::locale(""));
 	}
 
-	FgLog::~FgLog() noexcept(true)
+	GLog::~GLog() noexcept(true)
 	{
 		closeFile();
 	}
 
-	void FgLog::openFile()
+	void GLog::openFile()
 	{
 		if (!m_file.is_open())
 		{
@@ -28,7 +28,7 @@ namespace facegood
 		fs::permissions(m_fileName, fs::perms::owner_all);
 	}
 
-	std::time_t FgLog::getTimeStamp()
+	std::time_t GLog::getTimeStamp()
 	{
 		std::chrono::time_point<std::chrono::system_clock, std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
 		auto tmp = std::chrono::duration_cast<std::chrono::milliseconds>(tp.time_since_epoch());
@@ -36,7 +36,7 @@ namespace facegood
 		return timestamp;
 	}
 
-	std::tm* FgLog::getTM(const std::time_t& timestamp)
+	std::tm* GLog::getTM(const std::time_t& timestamp)
 	{
 		//此处转化为东八区北京时间，如果是其它时区需要按需求修改
 		time_t milli = timestamp + time_t(8 * 60 * 60 * 1000);
@@ -47,7 +47,7 @@ namespace facegood
 		return now;
 	}
 
-	void FgLog::setLogSavePath(const wstring& savePath)
+	void GLog::setLogSavePath(const wstring& savePath)
 	{
 		if (!fs::exists(savePath))
 		{
@@ -60,7 +60,7 @@ namespace facegood
 		m_fileName = path.wstring();
 	}
 
-	void FgLog::writeLog(const string& infor, const ELogLevel logLevel, const std::string& file, const std::string& function, const int line)
+	void GLog::writeLog(const string& infor, const ELogLevel logLevel, const std::string& file, const std::string& function, const int line)
 	{
 		openFile();
 
@@ -116,7 +116,7 @@ namespace facegood
 		closeFile();
 	}
 
-	void FgLog::closeFile()
+	void GLog::closeFile()
 	{
 		if (m_file.is_open())
 		{

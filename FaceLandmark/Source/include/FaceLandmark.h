@@ -8,7 +8,7 @@
 */
 #pragma once
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 #ifndef FACERECOGNITION_API
 #define FACERECOGNITION_API
@@ -19,10 +19,10 @@
 #endif
 
 using namespace std;
-using namespace facegood;
+using namespace Ghost;
 using namespace cv;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief face alignment
@@ -102,7 +102,7 @@ namespace facegood
 		* \@param infor
 		* \@return Results of implementation
 		*/
-		EResult saveFaceToDataBase(const cv::Mat& frameSave, const SPersonInfor& infor);
+		EResult saveFaceToDataBase(const cv::Mat& frameSave, const SPersonalInformation& infor);
 
 	public GHOST_SIGNAL:
 	/**
@@ -115,4 +115,4 @@ namespace facegood
 		class Impl;
 		std::unique_ptr<Impl> m_pImpl;
 	};
-}///namespace facegood
+}///namespace Ghost

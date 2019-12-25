@@ -54,7 +54,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -102,7 +102,8 @@
       <PreprocessorDefinitions>_MSC_TOOLSET_VER_=$(platformToolsetVersion);_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>F:\Third_party\ghost1.0.0\FgGhost\include;F:\Src\C++\VS\VS2019\ComputerVision\PoseDetection\Source\include;F:\Third_party\opencv3.2\opencv\build\include;F:\Src\C++\VS\Github\openpose-master\openpose-master\include;F:\Src\C++\VS\Github\openpose-master\openpose-master\3rdparty\windows\caffe3rdparty\include;F:\Src\C++\VS\Github\openpose-master\openpose-master\3rdparty\windows\caffe\include;F:\Src\C++\VS\Github\openpose-master\openpose-master\3rdparty\windows\caffe\include2;F:\Src\C++\VS\Github\openpose-master\openpose-master\3rdparty\windows\opencv\include;F:\Src\C++\VS\Github\openpose-master\openpose-master\3rdparty\windows\unzip;F:\Src\C++\VS\Github\openpose-master\openpose-master\3rdparty\windows\wget</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ThirdParty\Ghost\include;..\ThirdParty\OpenCV\include;Source\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -135,6 +136,8 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\ThirdParty\Ghost\include;..\ThirdParty\OpenCV\include;Source\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

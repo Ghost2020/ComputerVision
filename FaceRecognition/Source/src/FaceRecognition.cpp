@@ -16,7 +16,7 @@
 
 using namespace std;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief 私有类实现
@@ -230,7 +230,7 @@ namespace facegood
 			const cv::Scalar attributeRectColor(255, 191, 0);
 
 			std::vector<cv::Point> vecPoint;
-			std::vector<facegood::SPersonInfor> persons(m_infos.multiFaceInfos.faceNum);
+			std::vector<Ghost::SPersonInfor> persons(m_infos.multiFaceInfos.faceNum);
 
 			int textCount = 0;
 			int textHeight = 15;
@@ -388,8 +388,8 @@ namespace facegood
 		std::mutex m_mutex;
 
 		//信号槽
-		facegood::signalslot::Signal<void(const std::vector<facegood::SPersonInfor>&)> m_SINGNAL_void_persons;
-		facegood::signalslot::Slot m_SLOT_void_rects;
+		Ghost::signalslot::Signal<void(const std::vector<Ghost::SPersonInfor>&)> m_SINGNAL_void_persons;
+		Ghost::signalslot::Slot m_SLOT_void_rects;
 
 		//版本信息
 		const static string s_version;
@@ -519,9 +519,9 @@ namespace facegood
 		return m_pImpl->saveFaceToDataBase(frameSave, infor);
 	}
 
-	void FaceRecognition::bindSlotFaceFind(const std::function<void(const std::vector<facegood::SPersonInfor>&)>& func)
+	void FaceRecognition::bindSlotFaceFind(const std::function<void(const std::vector<Ghost::SPersonInfor>&)>& func)
 	{
 		m_pImpl->m_SLOT_void_rects = m_pImpl->m_SINGNAL_void_persons.connect(func);
 	}
 
-}///namespace facegood
+}///namespace Ghost

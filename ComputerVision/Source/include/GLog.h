@@ -1,5 +1,5 @@
 /*
-* FgLog.h				- A log for the Trace
+* GLog.h				- A log for the Trace
 * Author				- Ghost Chen
 * Date					- 2019/04/24
 * Copyright (c) FaceGood. All rights reserved.
@@ -15,9 +15,9 @@
 
 using namespace std;
 
-namespace facegood
+namespace Ghost
 {
-	class FgLog final
+	class GLog final
 	{
 	public:
 		//信息等级
@@ -38,13 +38,13 @@ namespace facegood
 		};
 
 	public:
-		explicit FgLog() noexcept(true);
-		~FgLog() noexcept(true);
+		explicit GLog() noexcept(true);
+		~GLog() noexcept(true);
 
-		FgLog(FgLog const&) = delete;
-		FgLog& operator= (FgLog const&) = delete;
-		FgLog(FgLog&&) = delete;
-		FgLog& operator=(FgLog&&) = delete;
+		GLog(GLog const&) = delete;
+		GLog& operator= (GLog const&) = delete;
+		GLog(GLog&&) = delete;
+		GLog& operator=(GLog&&) = delete;
 
 	public:
 		/**

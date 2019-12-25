@@ -10,7 +10,7 @@
 #include <thread>
 #include <opencv2/opencv.hpp>
 
-#include "FgUtilities.hpp"
+#include "GUtilities.hpp"
 
 #include <Windows.h>
 
@@ -33,7 +33,7 @@
 #endif
 
 using namespace std;
-using namespace facegood;
+using namespace Ghost;
 using namespace cv;
 
 // 使用互斥体保证单体运行

@@ -48,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>USE_CAFFE;USE_CUDA;PROFILER_ENABLED;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Src\C++\VS\VS2019\ComputerVision\ComputerVision;F:\Third_party\opencv3.2\opencv\build\include;F:\Third_party\ghost1.0.0\ComputerVision\ThirdParty\FaceRecognition\include;F:\Third_party\ghost1.0.0\FgGhost\include;F:\Third_party\ghost1.0.0\ComputerVision\ThirdParty\FaceLandmark\include;F:\Third_party\ghost1.0.0\ComputerVision\ThirdParty\EmotionDetection\include;F:\Third_party\ghost1.0.0\ComputerVision\ThirdParty\FaceDetection\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ThirdParty\OpenCV\include;..\ThirdParty\Ghost\include;..\ComputerVision\include;..\EmotionDetection\Source\include;..\FaceCompare\Source\include;..\FaceDetection\Source\include;..\FaceLandmark\Source\include;..\PoseDetection\Source\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,6 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\ThirdParty\OpenCV\include;..\ThirdParty\Ghost\include;..\ComputerVision\include;..\EmotionDetection\Source\include;..\FaceCompare\Source\include;..\FaceDetection\Source\include;..\FaceLandmark\Source\include;..\PoseDetection\Source\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

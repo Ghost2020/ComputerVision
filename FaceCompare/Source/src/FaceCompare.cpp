@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief 私有实现类
@@ -163,8 +163,8 @@ namespace facegood
 		MFloat m_threshold;					//比对的阈值
 
 		//信号槽
-		facegood::signalslot::Signal<void(const bool)> m_SIGNAL_void_bool;
-		facegood::signalslot::Slot m_SLOT_void_bool;
+		Ghost::signalslot::Signal<void(const bool)> m_SIGNAL_void_bool;
+		Ghost::signalslot::Slot m_SLOT_void_bool;
 
 		std::mutex m_mutex;					//互斥锁
 
@@ -263,4 +263,4 @@ namespace facegood
 	{
 		m_pImpl->m_SLOT_void_bool = m_pImpl->m_SIGNAL_void_bool.connect(func);
 	}
-}///namespace facegood
+}///namespace Ghost

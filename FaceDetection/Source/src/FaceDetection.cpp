@@ -9,7 +9,7 @@
 namespace fs = std::experimental::filesystem;
 using namespace std;
 
-namespace facegood
+namespace Ghost
 {
 	class FaceDetector::Impl
 	{
@@ -105,7 +105,7 @@ namespace facegood
 				{
 					m_faces.clear();
 					for (const auto& face : faces)
-						m_faces.push_back(facegood::SRect(face.bbox.x, face.bbox.y, face.bbox.width, face.bbox.height));
+						m_faces.push_back(Ghost::SRect(face.bbox.x, face.bbox.y, face.bbox.width, face.bbox.height));
 
 					m_SIGNAL_void_rects(m_faces);
 				}
@@ -153,13 +153,13 @@ namespace facegood
 
 		std::atomic<bool> m_initFlag;						//初始化标志
 		seeta::ImageData m_img_data;						//图像数据
-		std::vector<facegood::SRect> m_faces;				//faces
+		std::vector<Ghost::SRect> m_faces;				//faces
 
 		std::mutex m_mutex;									//互斥锁
 
 		//互斥锁
-		facegood::signalslot::Signal<void(const std::vector<facegood::SRect>&)> m_SIGNAL_void_rects;
-		facegood::signalslot::Slot m_SLOT_void_rects;
+		Ghost::signalslot::Signal<void(const std::vector<Ghost::SRect>&)> m_SIGNAL_void_rects;
+		Ghost::signalslot::Slot m_SLOT_void_rects;
 
 		const static string s_version;						//版本信息
 		static std::atomic<bool> s_pathFlag;				//依赖的数据路径是否被设置
@@ -295,8 +295,8 @@ namespace facegood
 		return EDetectModual::HumanFace_Detection_Modual;
 	}
 
-	void FaceDetector::bindSlotFaceFind(const std::function<void(const std::vector<facegood::SRect>&)>& func)
+	void FaceDetector::bindSlotFaceFind(const std::function<void(const std::vector<Ghost::SRect>&)>& func)
 	{
 		m_pImpl->m_SLOT_void_rects = m_pImpl->m_SIGNAL_void_rects.connect(func);
 	}
-}/// namespace facegood
+}/// namespace Ghost

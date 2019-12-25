@@ -8,10 +8,10 @@
 */
 #pragma once
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 using namespace std;
-using namespace facegood;
+using namespace Ghost;
 
 #ifndef FACEDETECTOR_API
 #define FACEDETECTOR_API
@@ -21,7 +21,7 @@ using namespace facegood;
 #define GHOST_SIGNAL
 #endif
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Face Location Detection
@@ -94,10 +94,10 @@ namespace facegood
 	/**
 	* \@brief
 	*/
-	void bindSlotFaceFind(const std::function<void(const std::vector<facegood::SRect>&)>& func);
+	void bindSlotFaceFind(const std::function<void(const std::vector<Ghost::SRect>&)>& func);
 
 	private:
 		class Impl;
 		std::unique_ptr<Impl> m_pImpl;
 	};
-}///namespace facegood
+}///namespace Ghost

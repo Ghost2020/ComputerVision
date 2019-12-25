@@ -8,7 +8,7 @@
 */
 #pragma once
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 #ifndef FACECOMPATOR_API
 #define FACECOMPATOR_API
@@ -18,7 +18,7 @@
 #define GHOST_SIGNAL
 #endif
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Face and Identity Card Verification
@@ -102,4 +102,4 @@ namespace facegood
 		class Impl;
 		unique_ptr<Impl> m_pImpl;
 	};
-}///namespace facegood
+}///namespace Ghost

@@ -8,11 +8,11 @@
 */
 #pragma once
 
-#include "FgIVisionDetect.h"
+#include "GIVisionDetect.h"
 
 #include <vector>
 
-using namespace facegood;
+using namespace Ghost;
 using namespace cv;
 using namespace std;
 
@@ -24,7 +24,7 @@ using namespace std;
 #define GHOST_SIGNAL
 #endif
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief Face Attribute Detection
@@ -111,10 +111,10 @@ namespace facegood
 	* \@brief Found friend appearing
 	* \@param func::Functions that need to be triggered
 	*/
-	void bindSlotFaceFind(const std::function<void(const std::vector<facegood::SPersonInfor>&)>& func);
+	void bindSlotFaceFind(const std::function<void(const std::vector<Ghost::SPersonInfor>&)>& func);
 
 	private:
 		class Impl;
 		std::unique_ptr<Impl> m_pImpl;
 	};
-}///namepsace facegood
+}///namepsace Ghost

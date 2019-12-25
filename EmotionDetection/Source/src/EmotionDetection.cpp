@@ -9,10 +9,10 @@
 
 #include "face_detection.h"
 
-using namespace facegood::signalslot;
-namespace fs = std::experimental::filesystem;
+using namespace Ghost::signalslot;
+namespace fs = std::filesystem;
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief 私有实现类
@@ -182,7 +182,7 @@ namespace facegood
 		std::atomic_bool m_initFlag;
 		std::mutex m_mutex;													//!< 互斥锁
 
-		Signal<void(const std::vector<facegood::EEmotion>&)> m_SIGNAL_void_emotion;		//!< 信号槽
+		Signal<void(const std::vector<Ghost::EEmotion>&)> m_SIGNAL_void_emotion;		//!< 信号槽
 		Slot m_SLOT_void_emotions;
 
 		static std::string m_faceModelPath;									//!< Model文件路径
@@ -285,8 +285,8 @@ namespace facegood
 		return EDetectModual::HumanFace_LandMark;
 	}
 
-	void EmotionDetector::bindSlotEmotionChanged(const std::function<void(const std::vector<facegood::EEmotion>&)>& functor)
+	void EmotionDetector::bindSlotEmotionChanged(const std::function<void(const std::vector<Ghost::EEmotion>&)>& functor)
 	{
 		m_pImpl->m_SLOT_void_emotions  = m_pImpl->m_SIGNAL_void_emotion.connect(functor);
 	}
-}///namespace facegood
+}///namespace Ghost

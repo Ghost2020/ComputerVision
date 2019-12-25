@@ -8,11 +8,11 @@
 #include "yolo_v2_class.hpp"
 
 using namespace std;
-namespace fs = std::experimental::filesystem;
-using namespace facegood::signalslot;
+namespace fs = std::filesystem;
+using namespace Ghost::signalslot;
 
 
-namespace facegood
+namespace Ghost
 {
 	/**
 	* \@brief 私有类实现用来实现 Object Detection 模块的包装
@@ -207,8 +207,8 @@ namespace facegood
 		std::vector<bbox_t> m_resultBoxs;
 
 		//信号槽
-		facegood::signalslot::Signal<void(const std::vector<std::string>&)> m_SIGNAL_void_Objects;
-		facegood::signalslot::Slot m_SLOT_void_Objects;
+		Ghost::signalslot::Signal<void(const std::vector<std::string>&)> m_SIGNAL_void_Objects;
+		Ghost::signalslot::Slot m_SLOT_void_Objects;
 
 		//锁
 		std::mutex m_mutex;
@@ -342,4 +342,4 @@ namespace facegood
 	{
 		m_pImpl->m_SLOT_void_Objects = m_pImpl->m_SIGNAL_void_Objects.connect(func);
 	}
-}///namespace facegood
+}///namespace Ghost
